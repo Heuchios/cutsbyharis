@@ -441,9 +441,9 @@ export default function Home() {
         <h3 className="mb-6 text-center text-3xl font-bold">About</h3>
 
         <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/70">
-          Cuts by Haris delivers premium grooming with attention to detail.
-          Clean fades, sharp lines, and a modern experience designed to make you
-          stand out.
+          I graduated from MC College in 2020 and have built a reputation for precision and creativity behind the chair. I specialize in fades, beard work, and sharp lineups, and I’m passionate about complete transformations—from the “before” look to the final styled finish. Every client can expect a detailed consultation, personalized recommendations, and a haircut tailored to their lifestyle.
+
+When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and riding my motorcycle in the summer.
         </p>
       </section>
 
