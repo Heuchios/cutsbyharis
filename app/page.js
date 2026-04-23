@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const timelyUrl = "https://bookings.gettimely.com/azizbarbershop/bb/book";
   const mapsUrl = "https://maps.google.com?q=Aziz Barbershop";
-  const phone = "+16394807148";
+  const phone = "+16394141668";
   const instagram = "https://instagram.com/cutsbyharis";
 
   const sections = ["home", "services", "about", "gallery", "reviews", "booking", "contact"];
@@ -556,7 +556,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
             href={`tel:${phone}`}
             className="block transition hover:text-[#d4a63f]"
           >
-            Phone: (639) 480-7148
+            Phone: (639) 414-1668
           </a>
 
           <a
