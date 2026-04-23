@@ -12,26 +12,27 @@ export default function Home() {
   const sections = ["home", "services", "about", "gallery", "reviews", "booking", "contact"];
   const [activeSection, setActiveSection] = useState("home");
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const services = [
     {
       name: "Haircut",
-      price: "$35+",
+      price: "$35",
       desc: "Clean, tailored haircut with sharp finishing details.",
     },
     {
       name: "Skin Fade",
-      price: "$38+",
+      price: "$40",
       desc: "Smooth blend with crisp lines and a modern premium look.",
     },
     {
       name: "Beard Trim",
-      price: "$20+",
+      price: "$20",
       desc: "Precise shaping and cleanup for a polished finish.",
     },
     {
       name: "Haircut + Beard",
-      price: "$55+",
+      price: "$50",
       desc: "Complete grooming package for a fresh confident style.",
     },
   ];
@@ -91,7 +92,10 @@ export default function Home() {
     };
 
     const handleEsc = (e) => {
-      if (e.key === "Escape") setBookingOpen(false);
+      if (e.key === "Escape") {
+        setBookingOpen(false);
+        setMobileMenuOpen(false);
+      }
     };
 
     handleScroll();
@@ -116,6 +120,8 @@ export default function Home() {
     if (id === "booking") return "Book";
     return id.charAt(0).toUpperCase() + id.slice(1);
   };
+
+  const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
     <main id="home" className="min-h-screen bg-[#050505] text-white">
@@ -206,56 +212,119 @@ export default function Home() {
       )}
 
       {/* NAVBAR */}
-      <header className="sticky top-0 z-50 flex items-center justify-between border-b border-white/10 bg-black/70 px-8 py-6 backdrop-blur-xl">
-        <h1 className="text-2xl font-black tracking-[0.25em] text-[#d4a63f]">
-          CUTS BY HARIS
-        </h1>
+      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
+        <div className="flex items-center justify-between px-4 py-5 md:px-8 md:py-6">
+          <h1 className="text-xl font-black tracking-[0.22em] text-[#d4a63f] md:text-2xl md:tracking-[0.25em]">
+            CUTS BY HARIS
+          </h1>
 
-        <nav className="hidden gap-8 text-sm md:flex">
-          {sections.map((id) => (
-            <a
-              key={id}
-              href={`#${id}`}
-              className={`relative pb-1 transition ${
-                activeSection === id
-                  ? "text-[#d4a63f]"
-                  : "text-white hover:text-[#d4a63f]"
-              }`}
-            >
-              {navLabel(id)}
-              <span
-                className={`absolute bottom-0 left-0 h-[2px] bg-[#d4a63f] transition-all duration-300 ${
-                  activeSection === id ? "w-full" : "w-0"
+          {/* DESKTOP NAV */}
+          <nav className="hidden gap-8 text-sm md:flex">
+            {sections.map((id) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={`relative pb-1 transition ${
+                  activeSection === id
+                    ? "text-[#d4a63f]"
+                    : "text-white hover:text-[#d4a63f]"
                 }`}
-              />
+              >
+                {navLabel(id)}
+                <span
+                  className={`absolute bottom-0 left-0 h-[2px] bg-[#d4a63f] transition-all duration-300 ${
+                    activeSection === id ? "w-full" : "w-0"
+                  }`}
+                />
+              </a>
+            ))}
+
+            <a
+              href={mapsUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="relative pb-1 text-white transition hover:text-[#d4a63f]"
+            >
+              Location
             </a>
-          ))}
+          </nav>
 
-          <a
-            href={mapsUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="relative pb-1 text-white transition hover:text-[#d4a63f]"
-          >
-            Location
-          </a>
-        </nav>
+          {/* DESKTOP RIGHT SIDE */}
+          <div className="hidden items-center gap-3 md:flex">
+            <a
+              href={`tel:${phone}`}
+              className="rounded-full border border-[#d4a63f]/40 px-4 py-2 text-sm font-semibold text-[#d4a63f] transition hover:bg-[#d4a63f] hover:text-black"
+            >
+              Call Now
+            </a>
 
-        <div className="flex items-center gap-3">
-          <a
-            href={`tel:${phone}`}
-            className="hidden md:inline-block rounded-full border border-[#d4a63f]/40 px-4 py-2 text-sm font-semibold text-[#d4a63f] transition hover:bg-[#d4a63f] hover:text-black"
-          >
-            Call Now
-          </a>
+            <button
+              onClick={() => setBookingOpen(true)}
+              className="rounded-full bg-[#d4a63f] px-5 py-2 font-semibold text-black shadow-[0_0_25px_rgba(212,166,63,0.5)] transition duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(212,166,63,0.8)]"
+            >
+              Book Now
+            </button>
+          </div>
 
+          {/* MOBILE MENU BUTTON */}
           <button
-            onClick={() => setBookingOpen(true)}
-            className="rounded-full bg-[#d4a63f] px-5 py-2 font-semibold text-black shadow-[0_0_25px_rgba(212,166,63,0.5)] transition duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(212,166,63,0.8)]"
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
+            className="rounded-full border border-[#d4a63f]/30 px-4 py-2 text-sm font-semibold text-[#d4a63f] transition hover:bg-[#d4a63f] hover:text-black md:hidden"
           >
-            Book Now
+            {mobileMenuOpen ? "Close" : "Menu"}
           </button>
         </div>
+
+        {/* MOBILE MENU */}
+        {mobileMenuOpen && (
+          <div className="border-t border-white/10 bg-black/95 px-4 py-4 md:hidden">
+            <div className="flex flex-col gap-4 text-sm">
+              {sections.map((id) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  onClick={closeMobileMenu}
+                  className={`transition ${
+                    activeSection === id
+                      ? "text-[#d4a63f]"
+                      : "text-white hover:text-[#d4a63f]"
+                  }`}
+                >
+                  {navLabel(id)}
+                </a>
+              ))}
+
+              <a
+                href={mapsUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={closeMobileMenu}
+                className="text-white transition hover:text-[#d4a63f]"
+              >
+                Location
+              </a>
+
+              <div className="mt-2 flex flex-col gap-3">
+                <a
+                  href={`tel:${phone}`}
+                  className="rounded-full border border-[#d4a63f]/40 px-4 py-3 text-center font-semibold text-[#d4a63f] transition hover:bg-[#d4a63f] hover:text-black"
+                >
+                  Call Now
+                </a>
+
+                <button
+                  onClick={() => {
+                    closeMobileMenu();
+                    setBookingOpen(true);
+                  }}
+                  className="rounded-full bg-[#d4a63f] px-4 py-3 font-semibold text-black shadow-[0_0_20px_rgba(212,166,63,0.45)] transition hover:scale-[1.02]"
+                >
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </header>
 
       {/* HERO */}
@@ -307,7 +376,7 @@ export default function Home() {
                   className="object-contain"
                 />
                 <p className="mt-6 text-sm uppercase tracking-[0.32em] text-white/35">
-                  At Aziz Barbershop
+                  Premium black and gold identity
                 </p>
               </div>
             </div>
@@ -372,8 +441,9 @@ export default function Home() {
         <h3 className="mb-6 text-center text-3xl font-bold">About</h3>
 
         <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/70">
-          Haris graduated from MC College in 2020 and has built a reputation for precision and creativity behind the chair. His specialties include fades, beard work, and sharp lineups, with a passion for complete transformations — from the “before” look to the styled finish. Clients can expect detailed consultation, personalized recommendations, and a haircut tailored to their lifestyle.
-When he’s not cutting, Haris enjoys gaming, watching sports and TV, fishing, and summer motorcycle rides.
+          Cuts by Haris delivers premium grooming with attention to detail.
+          Clean fades, sharp lines, and a modern experience designed to make you
+          stand out.
         </p>
       </section>
 
