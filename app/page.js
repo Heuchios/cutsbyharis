@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const timelyUrl = "https://bookings.gettimely.com/azizbarbershop/bb/book";
+  const timelyUrl = "https://cutsbyharis.setmore.com/haris";
   const mapsUrl = "https://maps.google.com?q=Aziz Barbershop";
   const phone = "+16394141668";
   const instagram = "https://instagram.com/cutsbyharis";
