@@ -12,8 +12,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Cuts By Haris | Barbershop In Saskatoon",
-  description: "Premium fades, beard work, and sharp lineups in Regina. Book your appointment with Cuts by Haris.",
+  title: "Cuts by Haris | Barbershop in Saskatoon",
+  description:
+    "Luxury barbershop experience with sharp fades, clean beard work, and premium service.",
+  icons: {
+    icon: "/icon.png",
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
