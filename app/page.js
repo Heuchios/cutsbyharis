@@ -186,7 +186,7 @@ export default function Home() {
             <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.28em] text-[#d4a63f]/80">
-                  Timely Booking
+                  Online Booking
                 </p>
                 <h3 className="text-lg font-semibold text-white">
                   Book your appointment
