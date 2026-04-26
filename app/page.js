@@ -376,7 +376,7 @@ export default function Home() {
                   className="object-contain"
                 />
                 <p className="mt-6 text-sm uppercase tracking-[0.32em] text-white/35">
-                  Premium black and gold identity
+                  At Aziz Barbershop
                 </p>
               </div>
             </div>
