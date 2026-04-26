@@ -604,3 +604,9 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
     </main>
   );
 }
+<a
+  href="#booking"
+  className="fixed bottom-6 right-6 z-50 bg-[#d4a63f] text-black px-5 py-3 rounded-full font-semibold shadow-[0_0_25px_rgba(212,166,63,0.6)] hover:scale-105 transition"
+>
+  Book
+</a>
