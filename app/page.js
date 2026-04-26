@@ -17,22 +17,22 @@ export default function Home() {
   const services = [
     {
       name: "Haircut",
-      price: "$35",
+      price: "$35+",
       desc: "Clean, tailored haircut with sharp finishing details.",
     },
     {
       name: "Skin Fade",
-      price: "$40",
+      price: "$38+",
       desc: "Smooth blend with crisp lines and a modern premium look.",
     },
     {
       name: "Beard Trim",
-      price: "$20",
+      price: "$15+",
       desc: "Precise shaping and cleanup for a polished finish.",
     },
     {
       name: "Haircut + Beard",
-      price: "$50",
+      price: "$50+",
       desc: "Complete grooming package for a fresh confident style.",
     },
   ];
