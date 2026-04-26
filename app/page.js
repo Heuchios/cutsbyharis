@@ -215,7 +215,7 @@ export default function Home() {
       <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
         <div className="flex items-center justify-between px-4 py-5 md:px-8 md:py-6">
           <h1 className="text-xl font-black tracking-[0.22em] text-[#d4a63f] md:text-2xl md:tracking-[0.25em]">
-            CUTS BY HARIS
+            CUTS BY HARIS @ Aziz BarberShop
           </h1>
 
           {/* DESKTOP NAV */}
