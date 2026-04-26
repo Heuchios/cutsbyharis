@@ -599,7 +599,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
 
       {/* FOOTER */}
       <footer className="reveal border-t border-white/10 py-6 text-center text-white/40">
-        © 2026 Cuts by Haris
+        © 2026 CUTS BY HARIS. All rights reserved.
       </footer>
     </main>
   );
