@@ -538,10 +538,10 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
               onClick={() => setBookingOpen(true)}
               className="inline-block rounded-full bg-[#d4a63f] px-8 py-4 font-semibold text-black shadow-[0_0_30px_rgba(212,166,63,0.5)] transition duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(212,166,63,0.85)]"
             >
-              Open Booking
+              BOOK NOW
             </button>
             <p className="mt-4 text-sm text-white/45">
-              Opens in a popup for a cleaner booking experience.
+              
             </p>
           </div>
         </div>
