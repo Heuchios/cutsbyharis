@@ -29,6 +29,24 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      <head>
+  <script
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=G-NTSTRV98RD"
+  ></script>
+
+  <script
+    dangerouslySetInnerHTML={{
+      __html: `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-NTSTRV98RD');
+      `,
+    }}
+  />
+</head>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
