@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const timelyUrl = "https://cutsbyharis.setmore.com/haris";
-  const mapsUrl = "https://maps.google.com?q=Aziz Barbershop";
+  const mapsUrl = "https://maps.app.goo.gl/1tpSeQ26uABuFAp9A";
   const phone = "+16394141668";
   const instagram = "https://instagram.com/cutsbyharis";
 
@@ -376,7 +376,7 @@ export default function Home() {
                   className="object-contain"
                 />
                 <p className="mt-6 text-sm uppercase tracking-[0.32em] text-white/35">
-                  At Aziz Barbershop
+                  At Sunsera Salon
                 </p>
               </div>
             </div>
