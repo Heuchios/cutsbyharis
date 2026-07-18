@@ -124,7 +124,7 @@ export default function Home() {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <main id="home" className="min-h-screen bg-[#f7f1e6] text-[#17130d]">
+    <main id="home" className="min-h-screen overflow-x-hidden bg-[#f7f1e6] pb-24 text-[#17130d] md:pb-0">
       <style jsx global>{`
         html {
           scroll-behavior: smooth;
@@ -132,8 +132,10 @@ export default function Home() {
 
         .reveal {
           opacity: 0;
-          transform: translateY(40px);
-          transition: opacity 0.9s ease, transform 0.9s ease;
+          transform: translateY(24px);
+          transition: opacity 0.75s cubic-bezier(0.2, 0.8, 0.2, 1),
+            transform 0.75s cubic-bezier(0.2, 0.8, 0.2, 1);
+          will-change: opacity, transform;
         }
 
         .reveal.revealed {
@@ -143,8 +145,10 @@ export default function Home() {
 
         .slide-left {
           opacity: 0;
-          transform: translateX(-60px);
-          transition: opacity 1s ease, transform 1s ease;
+          transform: translateX(-28px);
+          transition: opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
+            transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+          will-change: opacity, transform;
         }
 
         .slide-left.revealed {
@@ -154,8 +158,10 @@ export default function Home() {
 
         .slide-right {
           opacity: 0;
-          transform: translateX(60px);
-          transition: opacity 1s ease, transform 1s ease;
+          transform: translateX(28px);
+          transition: opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
+            transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+          will-change: opacity, transform;
         }
 
         .slide-right.revealed {
@@ -177,6 +183,28 @@ export default function Home() {
 
         .reveal-delay-4 {
           transition-delay: 0.4s;
+        }
+
+        @media (max-width: 767px) {
+          .reveal,
+          .slide-left,
+          .slide-right {
+            transform: translateY(18px);
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          html {
+            scroll-behavior: auto;
+          }
+
+          .reveal,
+          .slide-left,
+          .slide-right {
+            opacity: 1;
+            transform: none;
+            transition: none;
+          }
         }
       `}</style>
 
@@ -213,8 +241,8 @@ export default function Home() {
 
       {/* NAVBAR */}
       <header className="sticky top-0 z-50 border-b border-[#17130d]/10 bg-[#fffaf1]/85 backdrop-blur-xl">
-        <div className="flex items-center justify-between px-4 py-5 md:px-8 md:py-6">
-          <h1 className="text-xl font-black tracking-[0.22em] text-[#8a621c] md:text-2xl md:tracking-[0.25em]">
+        <div className="flex items-center justify-between px-4 py-4 md:px-8 md:py-6">
+          <h1 className="text-lg font-black tracking-[0.2em] text-[#8a621c] sm:text-xl md:text-2xl md:tracking-[0.25em]">
             CUTS BY HARIS
           </h1>
 
@@ -269,7 +297,8 @@ export default function Home() {
           {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="rounded-full border border-[#b8892f]/40 px-4 py-2 text-sm font-semibold text-[#8a621c] transition hover:bg-[#b8892f] hover:text-white md:hidden"
+            aria-expanded={mobileMenuOpen}
+            className="min-h-11 rounded-full border border-[#b8892f]/40 px-4 py-2 text-sm font-semibold text-[#8a621c] transition hover:bg-[#b8892f] hover:text-white md:hidden"
           >
             {mobileMenuOpen ? "Close" : "Menu"}
           </button>
@@ -307,7 +336,7 @@ export default function Home() {
               <div className="mt-2 flex flex-col gap-3">
                 <a
                   href={`tel:${phone}`}
-                  className="rounded-full border border-[#b8892f]/40 px-4 py-3 text-center font-semibold text-[#8a621c] transition hover:bg-[#b8892f] hover:text-white"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#b8892f]/40 px-4 py-3 text-center font-semibold text-[#8a621c] transition hover:bg-[#b8892f] hover:text-white"
                 >
                   Call Now
                 </a>
@@ -317,7 +346,7 @@ export default function Home() {
                     closeMobileMenu();
                     setBookingOpen(true);
                   }}
-                  className="rounded-full bg-[#17130d] px-4 py-3 font-semibold text-[#fffaf1] shadow-[0_12px_24px_rgba(23,19,13,0.22)] transition hover:scale-[1.02] hover:bg-[#b8892f]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#17130d] px-4 py-3 font-semibold text-[#fffaf1] shadow-[0_12px_24px_rgba(23,19,13,0.22)] transition hover:scale-[1.02] hover:bg-[#b8892f]"
                 >
                   Book Now
                 </button>
@@ -327,43 +356,59 @@ export default function Home() {
         )}
       </header>
 
+      <div className="fixed inset-x-4 bottom-4 z-40 grid grid-cols-2 gap-3 rounded-full border border-[#17130d]/10 bg-[#fffaf1]/88 p-2 shadow-[0_18px_48px_rgba(23,19,13,0.2)] backdrop-blur-xl md:hidden">
+        <a
+          href={`tel:${phone}`}
+          className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#17130d] px-4 text-sm font-semibold text-[#fffaf1]"
+        >
+          Call Now
+        </a>
+
+        <button
+          onClick={() => setBookingOpen(true)}
+          className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#b8892f] px-4 text-sm font-semibold text-white"
+        >
+          Book Now
+        </button>
+      </div>
+
       {/* HERO */}
-      <section className="px-6 py-24">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
+      <section className="px-5 py-16 sm:px-6 md:py-24">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 md:grid-cols-2 md:gap-12">
           <div className="slide-left">
             <p className="mb-4 text-sm uppercase tracking-[0.4em] text-[#8a621c]">
               Luxury Barbershop Experience
             </p>
 
-            <h2 className="mb-6 text-5xl font-black leading-tight md:text-7xl">
+            <h2 className="mb-6 text-4xl font-black leading-tight sm:text-5xl md:text-7xl">
               Luxury Grooming.
               <br />
               <span className="text-[#8a621c]">Redefined.</span>
             </h2>
 
-            <p className="mb-8 max-w-xl text-lg text-[#17130d]/70">
+            <p className="mb-8 max-w-xl text-base leading-7 text-[#17130d]/70 md:text-lg">
               Modern barbershop experience with sharp fades, clean beard work,
               and premium service.
             </p>
 
-            <div className="flex flex-col gap-4 sm:flex-row">
+            <div className="grid max-w-sm grid-cols-1 gap-3 sm:max-w-none sm:grid-cols-[auto_auto_auto]">
               <button
                 onClick={() => setBookingOpen(true)}
-                className="rounded-full bg-[#17130d] px-7 py-3 text-center font-semibold text-[#fffaf1] shadow-[0_14px_32px_rgba(23,19,13,0.24)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#17130d] px-7 py-3 text-center font-semibold text-[#fffaf1] shadow-[0_14px_32px_rgba(23,19,13,0.24)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
               >
                 Book Appointment
               </button>
 
               <a
                 href={`tel:${phone}`}
-                className="rounded-full bg-[#17130d] px-7 py-3 text-center font-semibold text-[#fffaf1] shadow-[0_14px_32px_rgba(23,19,13,0.24)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#17130d] px-7 py-3 text-center font-semibold text-[#fffaf1] shadow-[0_14px_32px_rgba(23,19,13,0.24)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
               >
                 Call Now
               </a>
 
               <a
                 href="#services"
-                className="rounded-full border border-[#17130d]/15 bg-[#fffaf1]/55 px-7 py-3 text-center font-semibold text-[#17130d] transition duration-300 hover:border-[#b8892f] hover:text-[#8a621c]"
+                className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#17130d]/15 bg-[#fffaf1]/55 px-7 py-3 text-center font-semibold text-[#17130d] transition duration-300 hover:border-[#b8892f] hover:text-[#8a621c]"
               >
                 View Services
               </a>
@@ -373,14 +418,14 @@ export default function Home() {
           <div className="slide-right relative flex justify-center">
             <div className="absolute -inset-6 rounded-full bg-[#b8892f]/15 blur-3xl" />
 
-            <div className="relative rounded-[2rem] border border-[#17130d]/10 bg-[#fffaf1]/70 p-6 backdrop-blur-md shadow-[0_24px_70px_rgba(23,19,13,0.12)]">
-              <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[1.5rem] border border-[#b8892f]/20 bg-[radial-gradient(circle_at_top,rgba(184,137,47,0.13),transparent_44%),linear-gradient(180deg,rgba(255,250,241,0.92),rgba(239,227,208,0.72))] p-8 text-center">
+            <div className="relative w-full max-w-sm rounded-[2rem] border border-[#17130d]/10 bg-[#fffaf1]/70 p-5 backdrop-blur-md shadow-[0_24px_70px_rgba(23,19,13,0.12)] sm:p-6">
+              <div className="flex min-h-[320px] flex-col items-center justify-center rounded-[1.5rem] border border-[#b8892f]/20 bg-[linear-gradient(180deg,rgba(255,250,241,0.92),rgba(239,227,208,0.72))] p-7 text-center md:min-h-[420px] md:p-8">
                 <Image
                   src="/logo.png"
                   alt="Cuts by Haris Logo"
                   width={280}
                   height={280}
-                  className="object-contain"
+                  className="w-52 object-contain sm:w-64 md:w-[280px]"
                 />
                 <p className="mt-6 text-sm uppercase tracking-[0.32em] text-[#17130d]/45">
                   At Sunsera Salon
@@ -392,7 +437,7 @@ export default function Home() {
       </section>
 
       {/* FEATURES */}
-      <section className="reveal px-8 pb-12">
+      <section className="reveal px-5 pb-12 md:px-8">
         <div className="grid gap-6 md:grid-cols-3">
           {[
             "Precision fades & sharp lines",
@@ -410,7 +455,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section id="services" className="reveal px-8 py-20">
+      <section id="services" className="reveal px-5 py-16 md:px-8 md:py-20">
         <h3 className="mb-3 text-center text-3xl font-bold">Services</h3>
         <p className="mb-10 text-center text-[#17130d]/58">
           Premium cuts with clean presentation and luxury styling
@@ -443,19 +488,23 @@ export default function Home() {
       {/* ABOUT */}
       <section
         id="about"
-        className="reveal bg-[#fffaf1]/62 px-8 py-20 text-center backdrop-blur-md"
+        className="reveal bg-[#fffaf1]/62 px-5 py-16 text-center backdrop-blur-md md:px-8 md:py-20"
       >
         <h3 className="mb-6 text-center text-3xl font-bold">About</h3>
 
-        <p className="mx-auto max-w-2xl text-lg leading-relaxed text-[#17130d]/70">
-          I graduated from MC College in 2020 and have built a reputation for precision and creativity behind the chair. I specialize in fades, beard work, and sharp lineups, and I’m passionate about complete transformations—from the “before” look to the final styled finish. Every client can expect a detailed consultation, personalized recommendations, and a haircut tailored to their lifestyle.
+        <div className="mx-auto max-w-2xl space-y-5 text-base leading-8 text-[#17130d]/70 md:text-lg">
+          <p>
+            I graduated from MC College in 2020 and have built a reputation for precision and creativity behind the chair. I specialize in fades, beard work, and sharp lineups, and I’m passionate about complete transformations from the before look to the final styled finish.
+          </p>
 
-When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and riding my motorcycle in the summer.
-        </p>
+          <p>
+            Every client can expect a detailed consultation, personalized recommendations, and a haircut tailored to their lifestyle. When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and riding my motorcycle in the summer.
+          </p>
+        </div>
       </section>
 
       {/* VIDEO GALLERY */}
-      <section id="gallery" className="reveal px-8 py-20">
+      <section id="gallery" className="reveal px-5 py-16 md:px-8 md:py-20">
         <h3 className="mb-3 text-center text-3xl font-bold">Gallery</h3>
         <p className="mb-10 text-center text-[#17130d]/58">
           Real work. Real style. Real results.
@@ -470,7 +519,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
                 4
               )}`}
             >
-              <div className="relative aspect-square overflow-hidden bg-black">
+              <div className="relative aspect-[4/5] overflow-hidden bg-black md:aspect-square">
                 <video
                   src={src}
                   autoPlay
@@ -489,7 +538,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
       </section>
 
       {/* CLIENT REVIEWS */}
-      <section id="reviews" className="reveal bg-[#fffaf1]/62 px-8 py-20">
+      <section id="reviews" className="reveal bg-[#fffaf1]/62 px-5 py-16 md:px-8 md:py-20">
         <h3 className="mb-3 text-center text-3xl font-bold">Client Reviews</h3>
         <p className="mb-10 text-center text-[#17130d]/58">
           Trusted service and a premium customer experience
@@ -510,8 +559,8 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
       </section>
 
       {/* BOOKING */}
-      <section id="booking" className="reveal px-8 py-20">
-        <div className="mx-auto max-w-5xl rounded-[2rem] border border-[#b8892f]/20 bg-[linear-gradient(180deg,rgba(255,250,241,0.9),rgba(239,227,208,0.62))] p-8 backdrop-blur-md shadow-[0_24px_70px_rgba(23,19,13,0.12)]">
+      <section id="booking" className="reveal px-5 py-16 md:px-8 md:py-20">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border border-[#b8892f]/20 bg-[linear-gradient(180deg,rgba(255,250,241,0.9),rgba(239,227,208,0.62))] p-6 backdrop-blur-md shadow-[0_24px_70px_rgba(23,19,13,0.12)] md:p-8">
           <div className="text-center">
             <p className="mb-3 text-sm uppercase tracking-[0.35em] text-[#8a621c]">
               Online Booking
@@ -555,7 +604,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="reveal bg-[#fffaf1]/62 px-8 py-20 text-center">
+      <section id="contact" className="reveal bg-[#fffaf1]/62 px-5 py-16 text-center md:px-8 md:py-20">
         <h3 className="mb-6 text-center text-3xl font-bold">Contact</h3>
 
         <div className="space-y-3 text-[#17130d]/70">
