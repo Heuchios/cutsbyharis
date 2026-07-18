@@ -124,7 +124,7 @@ export default function Home() {
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <main id="home" className="min-h-screen bg-[#050505] text-white">
+    <main id="home" className="min-h-screen bg-[#f7f1e6] text-[#17130d]">
       <style jsx global>{`
         html {
           scroll-behavior: smooth;
@@ -181,21 +181,21 @@ export default function Home() {
       `}</style>
 
       {bookingOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm">
-          <div className="relative h-[85vh] w-full max-w-5xl overflow-hidden rounded-[2rem] border border-[#d4a63f]/25 bg-[#070707] shadow-[0_0_60px_rgba(0,0,0,0.6)]">
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#17130d]/75 p-4 backdrop-blur-sm">
+          <div className="relative h-[85vh] w-full max-w-5xl overflow-hidden rounded-[2rem] border border-[#b8892f]/25 bg-[#fffaf1] shadow-[0_24px_70px_rgba(23,19,13,0.3)]">
+            <div className="flex items-center justify-between border-b border-[#17130d]/10 px-5 py-4">
               <div>
-                <p className="text-xs uppercase tracking-[0.28em] text-[#d4a63f]/80">
+                <p className="text-xs uppercase tracking-[0.28em] text-[#b8892f]">
                   Online Booking
                 </p>
-                <h3 className="text-lg font-semibold text-white">
+                <h3 className="text-lg font-semibold text-[#17130d]">
                   Book your appointment
                 </h3>
               </div>
 
               <button
                 onClick={() => setBookingOpen(false)}
-                className="rounded-full border border-white/15 px-4 py-2 text-sm text-white transition hover:border-[#d4a63f] hover:text-[#d4a63f]"
+                className="rounded-full border border-[#17130d]/15 px-4 py-2 text-sm text-[#17130d] transition hover:border-[#b8892f] hover:text-[#8a621c]"
               >
                 Close
               </button>
@@ -212,9 +212,9 @@ export default function Home() {
       )}
 
       {/* NAVBAR */}
-      <header className="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur-xl">
+      <header className="sticky top-0 z-50 border-b border-[#17130d]/10 bg-[#fffaf1]/85 backdrop-blur-xl">
         <div className="flex items-center justify-between px-4 py-5 md:px-8 md:py-6">
-          <h1 className="text-xl font-black tracking-[0.22em] text-[#d4a63f] md:text-2xl md:tracking-[0.25em]">
+          <h1 className="text-xl font-black tracking-[0.22em] text-[#8a621c] md:text-2xl md:tracking-[0.25em]">
             CUTS BY HARIS
           </h1>
 
@@ -226,13 +226,13 @@ export default function Home() {
                 href={`#${id}`}
                 className={`relative pb-1 transition ${
                   activeSection === id
-                    ? "text-[#d4a63f]"
-                    : "text-white hover:text-[#d4a63f]"
+                    ? "text-[#8a621c]"
+                    : "text-[#17130d]/75 hover:text-[#8a621c]"
                 }`}
               >
                 {navLabel(id)}
                 <span
-                  className={`absolute bottom-0 left-0 h-[2px] bg-[#d4a63f] transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-[2px] bg-[#b8892f] transition-all duration-300 ${
                     activeSection === id ? "w-full" : "w-0"
                   }`}
                 />
@@ -243,7 +243,7 @@ export default function Home() {
               href={mapsUrl}
               target="_blank"
               rel="noreferrer"
-              className="relative pb-1 text-white transition hover:text-[#d4a63f]"
+              className="relative pb-1 text-[#17130d]/75 transition hover:text-[#8a621c]"
             >
               Location
             </a>
@@ -253,14 +253,14 @@ export default function Home() {
           <div className="hidden items-center gap-3 md:flex">
             <a
               href={`tel:${phone}`}
-              className="rounded-full border border-[#d4a63f]/40 px-4 py-2 text-sm font-semibold text-[#d4a63f] transition hover:bg-[#d4a63f] hover:text-black"
+              className="rounded-full border border-[#b8892f]/50 px-4 py-2 text-sm font-semibold text-[#8a621c] transition hover:bg-[#b8892f] hover:text-white"
             >
               Call Now
             </a>
 
             <button
               onClick={() => setBookingOpen(true)}
-              className="rounded-full bg-[#d4a63f] px-5 py-2 font-semibold text-black shadow-[0_0_25px_rgba(212,166,63,0.5)] transition duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(212,166,63,0.8)]"
+              className="rounded-full bg-[#17130d] px-5 py-2 font-semibold text-[#fffaf1] shadow-[0_12px_30px_rgba(23,19,13,0.22)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
             >
               Book Now
             </button>
@@ -269,7 +269,7 @@ export default function Home() {
           {/* MOBILE MENU BUTTON */}
           <button
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="rounded-full border border-[#d4a63f]/30 px-4 py-2 text-sm font-semibold text-[#d4a63f] transition hover:bg-[#d4a63f] hover:text-black md:hidden"
+            className="rounded-full border border-[#b8892f]/40 px-4 py-2 text-sm font-semibold text-[#8a621c] transition hover:bg-[#b8892f] hover:text-white md:hidden"
           >
             {mobileMenuOpen ? "Close" : "Menu"}
           </button>
@@ -277,7 +277,7 @@ export default function Home() {
 
         {/* MOBILE MENU */}
         {mobileMenuOpen && (
-          <div className="border-t border-white/10 bg-black/95 px-4 py-4 md:hidden">
+          <div className="border-t border-[#17130d]/10 bg-[#fffaf1] px-4 py-4 md:hidden">
             <div className="flex flex-col gap-4 text-sm">
               {sections.map((id) => (
                 <a
@@ -286,8 +286,8 @@ export default function Home() {
                   onClick={closeMobileMenu}
                   className={`transition ${
                     activeSection === id
-                      ? "text-[#d4a63f]"
-                      : "text-white hover:text-[#d4a63f]"
+                      ? "text-[#8a621c]"
+                      : "text-[#17130d]/75 hover:text-[#8a621c]"
                   }`}
                 >
                   {navLabel(id)}
@@ -299,7 +299,7 @@ export default function Home() {
                 target="_blank"
                 rel="noreferrer"
                 onClick={closeMobileMenu}
-                className="text-white transition hover:text-[#d4a63f]"
+                className="text-[#17130d]/75 transition hover:text-[#8a621c]"
               >
                 Location
               </a>
@@ -307,7 +307,7 @@ export default function Home() {
               <div className="mt-2 flex flex-col gap-3">
                 <a
                   href={`tel:${phone}`}
-                  className="rounded-full border border-[#d4a63f]/40 px-4 py-3 text-center font-semibold text-[#d4a63f] transition hover:bg-[#d4a63f] hover:text-black"
+                  className="rounded-full border border-[#b8892f]/40 px-4 py-3 text-center font-semibold text-[#8a621c] transition hover:bg-[#b8892f] hover:text-white"
                 >
                   Call Now
                 </a>
@@ -317,7 +317,7 @@ export default function Home() {
                     closeMobileMenu();
                     setBookingOpen(true);
                   }}
-                  className="rounded-full bg-[#d4a63f] px-4 py-3 font-semibold text-black shadow-[0_0_20px_rgba(212,166,63,0.45)] transition hover:scale-[1.02]"
+                  className="rounded-full bg-[#17130d] px-4 py-3 font-semibold text-[#fffaf1] shadow-[0_12px_24px_rgba(23,19,13,0.22)] transition hover:scale-[1.02] hover:bg-[#b8892f]"
                 >
                   Book Now
                 </button>
@@ -331,17 +331,17 @@ export default function Home() {
       <section className="px-6 py-24">
         <div className="mx-auto grid max-w-7xl items-center gap-12 md:grid-cols-2">
           <div className="slide-left">
-            <p className="mb-4 text-sm uppercase tracking-[0.4em] text-[#d4a63f]/80">
+            <p className="mb-4 text-sm uppercase tracking-[0.4em] text-[#8a621c]">
               Luxury Barbershop Experience
             </p>
 
             <h2 className="mb-6 text-5xl font-black leading-tight md:text-7xl">
               Luxury Grooming.
               <br />
-              <span className="text-[#d4a63f]">Redefined.</span>
+              <span className="text-[#8a621c]">Redefined.</span>
             </h2>
 
-            <p className="mb-8 max-w-xl text-lg text-white/70">
+            <p className="mb-8 max-w-xl text-lg text-[#17130d]/70">
               Modern barbershop experience with sharp fades, clean beard work,
               and premium service.
             </p>
@@ -349,14 +349,14 @@ export default function Home() {
             <div className="flex flex-col gap-4 sm:flex-row">
               <button
                 onClick={() => setBookingOpen(true)}
-                className="rounded-full bg-[#d4a63f] px-7 py-3 text-center font-semibold text-black shadow-[0_0_25px_rgba(212,166,63,0.5)] transition duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(212,166,63,0.8)]"
+                className="rounded-full bg-[#17130d] px-7 py-3 text-center font-semibold text-[#fffaf1] shadow-[0_14px_32px_rgba(23,19,13,0.24)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
               >
                 Book Appointment
               </button>
 
               <a
                 href="#services"
-                className="rounded-full border border-white/15 px-7 py-3 text-center font-semibold text-white transition duration-300 hover:border-[#d4a63f] hover:text-[#d4a63f]"
+                className="rounded-full border border-[#17130d]/15 bg-[#fffaf1]/55 px-7 py-3 text-center font-semibold text-[#17130d] transition duration-300 hover:border-[#b8892f] hover:text-[#8a621c]"
               >
                 View Services
               </a>
@@ -364,10 +364,10 @@ export default function Home() {
           </div>
 
           <div className="slide-right relative flex justify-center">
-            <div className="absolute -inset-6 rounded-full bg-[#d4a63f]/10 blur-3xl" />
+            <div className="absolute -inset-6 rounded-full bg-[#b8892f]/15 blur-3xl" />
 
-            <div className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md shadow-[0_0_50px_rgba(0,0,0,0.35)]">
-              <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[1.5rem] border border-[#d4a63f]/20 bg-[radial-gradient(circle_at_top,rgba(212,166,63,0.12),transparent_40%),linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-8 text-center">
+            <div className="relative rounded-[2rem] border border-[#17130d]/10 bg-[#fffaf1]/70 p-6 backdrop-blur-md shadow-[0_24px_70px_rgba(23,19,13,0.12)]">
+              <div className="flex min-h-[420px] flex-col items-center justify-center rounded-[1.5rem] border border-[#b8892f]/20 bg-[radial-gradient(circle_at_top,rgba(184,137,47,0.13),transparent_44%),linear-gradient(180deg,rgba(255,250,241,0.92),rgba(239,227,208,0.72))] p-8 text-center">
                 <Image
                   src="/logo.png"
                   alt="Cuts by Haris Logo"
@@ -375,7 +375,7 @@ export default function Home() {
                   height={280}
                   className="object-contain"
                 />
-                <p className="mt-6 text-sm uppercase tracking-[0.32em] text-white/35">
+                <p className="mt-6 text-sm uppercase tracking-[0.32em] text-[#17130d]/45">
                   At Sunsera Salon
                 </p>
               </div>
@@ -394,7 +394,7 @@ export default function Home() {
           ].map((item, index) => (
             <div
               key={item}
-              className={`reveal rounded-2xl border border-white/10 bg-white/[0.03] p-6 text-center backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-[#d4a63f]/40 hover:shadow-[0_0_30px_rgba(212,166,63,0.08)] reveal-delay-${index + 1}`}
+              className={`reveal rounded-2xl border border-[#17130d]/10 bg-[#fffaf1]/65 p-6 text-center text-[#17130d]/82 backdrop-blur-md shadow-[0_18px_44px_rgba(23,19,13,0.07)] transition duration-300 hover:-translate-y-1 hover:border-[#b8892f]/40 hover:shadow-[0_20px_48px_rgba(184,137,47,0.12)] reveal-delay-${index + 1}`}
             >
               {item}
             </div>
@@ -405,7 +405,7 @@ export default function Home() {
       {/* SERVICES */}
       <section id="services" className="reveal px-8 py-20">
         <h3 className="mb-3 text-center text-3xl font-bold">Services</h3>
-        <p className="mb-10 text-center text-white/55">
+        <p className="mb-10 text-center text-[#17130d]/58">
           Premium cuts with clean presentation and luxury styling
         </p>
 
@@ -413,21 +413,21 @@ export default function Home() {
           {services.map((service, index) => (
             <div
               key={service.name}
-              className={`reveal group rounded-2xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:border-[#d4a63f]/50 hover:shadow-[0_0_35px_rgba(212,166,63,0.12)] reveal-delay-${Math.min(
+              className={`reveal group rounded-2xl border border-[#17130d]/10 bg-[#fffaf1]/72 p-6 backdrop-blur-md shadow-[0_18px_48px_rgba(23,19,13,0.08)] transition duration-300 hover:-translate-y-2 hover:border-[#b8892f]/45 hover:shadow-[0_24px_54px_rgba(184,137,47,0.14)] reveal-delay-${Math.min(
                 index + 1,
                 4
               )}`}
             >
               <div className="mb-4 flex items-start justify-between gap-4">
                 <h4 className="text-xl font-semibold">{service.name}</h4>
-                <span className="rounded-full border border-[#d4a63f]/25 bg-[#d4a63f]/10 px-3 py-1 text-sm font-semibold text-[#d4a63f]">
+                <span className="rounded-full border border-[#b8892f]/25 bg-[#b8892f]/10 px-3 py-1 text-sm font-semibold text-[#8a621c]">
                   {service.price}
                 </span>
               </div>
 
-              <p className="text-white/60">{service.desc}</p>
+              <p className="text-[#17130d]/62">{service.desc}</p>
 
-              <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-[#d4a63f]/30 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
+              <div className="mt-6 h-px w-full bg-gradient-to-r from-transparent via-[#b8892f]/35 to-transparent opacity-0 transition duration-300 group-hover:opacity-100" />
             </div>
           ))}
         </div>
@@ -436,11 +436,11 @@ export default function Home() {
       {/* ABOUT */}
       <section
         id="about"
-        className="reveal bg-white/[0.03] px-8 py-20 text-center backdrop-blur-md"
+        className="reveal bg-[#fffaf1]/62 px-8 py-20 text-center backdrop-blur-md"
       >
         <h3 className="mb-6 text-center text-3xl font-bold">About</h3>
 
-        <p className="mx-auto max-w-2xl text-lg leading-relaxed text-white/70">
+        <p className="mx-auto max-w-2xl text-lg leading-relaxed text-[#17130d]/70">
           I graduated from MC College in 2020 and have built a reputation for precision and creativity behind the chair. I specialize in fades, beard work, and sharp lineups, and I’m passionate about complete transformations—from the “before” look to the final styled finish. Every client can expect a detailed consultation, personalized recommendations, and a haircut tailored to their lifestyle.
 
 When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and riding my motorcycle in the summer.
@@ -450,7 +450,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
       {/* VIDEO GALLERY */}
       <section id="gallery" className="reveal px-8 py-20">
         <h3 className="mb-3 text-center text-3xl font-bold">Gallery</h3>
-        <p className="mb-10 text-center text-white/55">
+        <p className="mb-10 text-center text-[#17130d]/58">
           Real work. Real style. Real results.
         </p>
 
@@ -458,7 +458,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
           {videos.map((src, index) => (
             <div
               key={index}
-              className={`reveal group overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] backdrop-blur-md transition duration-300 hover:-translate-y-2 hover:border-[#d4a63f]/40 hover:shadow-[0_0_30px_rgba(212,166,63,0.1)] reveal-delay-${Math.min(
+              className={`reveal group overflow-hidden rounded-2xl border border-[#17130d]/10 bg-[#fffaf1]/70 backdrop-blur-md shadow-[0_18px_48px_rgba(23,19,13,0.1)] transition duration-300 hover:-translate-y-2 hover:border-[#b8892f]/40 hover:shadow-[0_24px_54px_rgba(184,137,47,0.14)] reveal-delay-${Math.min(
                 index + 1,
                 4
               )}`}
@@ -473,7 +473,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
                   className="h-full w-full object-cover transition duration-700 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-black/35 transition duration-500 group-hover:bg-black/20" />
-                <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 shadow-[inset_0_0_60px_rgba(212,166,63,0.22)]" />
+                <div className="absolute inset-0 opacity-0 transition duration-500 group-hover:opacity-100 shadow-[inset_0_0_60px_rgba(184,137,47,0.24)]" />
                 <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle,transparent_58%,rgba(0,0,0,0.75)_100%)]" />
               </div>
             </div>
@@ -482,9 +482,9 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
       </section>
 
       {/* CLIENT REVIEWS */}
-      <section id="reviews" className="reveal bg-white/[0.03] px-8 py-20">
+      <section id="reviews" className="reveal bg-[#fffaf1]/62 px-8 py-20">
         <h3 className="mb-3 text-center text-3xl font-bold">Client Reviews</h3>
-        <p className="mb-10 text-center text-white/55">
+        <p className="mb-10 text-center text-[#17130d]/58">
           Trusted service and a premium customer experience
         </p>
 
@@ -492,11 +492,11 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
           {reviews.map((review, index) => (
             <div
               key={review.name}
-              className={`reveal rounded-2xl border border-white/10 bg-black/40 p-6 backdrop-blur-md transition duration-300 hover:-translate-y-1 hover:border-[#d4a63f]/40 hover:shadow-[0_0_30px_rgba(212,166,63,0.08)] reveal-delay-${index + 1}`}
+              className={`reveal rounded-2xl border border-[#17130d]/10 bg-[#fffaf1]/76 p-6 backdrop-blur-md shadow-[0_18px_44px_rgba(23,19,13,0.08)] transition duration-300 hover:-translate-y-1 hover:border-[#b8892f]/40 hover:shadow-[0_22px_48px_rgba(184,137,47,0.12)] reveal-delay-${index + 1}`}
             >
-              <div className="mb-4 text-[#d4a63f]">★★★★★</div>
-              <p className="mb-6 text-white/70">{review.text}</p>
-              <p className="font-semibold text-white">{review.name}</p>
+              <div className="mb-4 text-[#b8892f]">★★★★★</div>
+              <p className="mb-6 text-[#17130d]/70">{review.text}</p>
+              <p className="font-semibold text-[#17130d]">{review.name}</p>
             </div>
           ))}
         </div>
@@ -504,15 +504,15 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
 
       {/* BOOKING */}
       <section id="booking" className="reveal px-8 py-20">
-        <div className="mx-auto max-w-5xl rounded-[2rem] border border-[#d4a63f]/20 bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] p-8 backdrop-blur-md shadow-[0_0_60px_rgba(0,0,0,0.35)]">
+        <div className="mx-auto max-w-5xl rounded-[2rem] border border-[#b8892f]/20 bg-[linear-gradient(180deg,rgba(255,250,241,0.9),rgba(239,227,208,0.62))] p-8 backdrop-blur-md shadow-[0_24px_70px_rgba(23,19,13,0.12)]">
           <div className="text-center">
-            <p className="mb-3 text-sm uppercase tracking-[0.35em] text-[#d4a63f]/80">
+            <p className="mb-3 text-sm uppercase tracking-[0.35em] text-[#8a621c]">
               Online Booking
             </p>
             <h3 className="mb-4 text-3xl font-bold md:text-4xl">
               Book your next appointment
             </h3>
-            <p className="mx-auto max-w-2xl text-white/65">
+            <p className="mx-auto max-w-2xl text-[#17130d]/65">
               Choose your service, date, and time through Timely. You’ll see live
               availability and get automatic confirmation from your booking system.
             </p>
@@ -526,7 +526,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
             ].map((item, index) => (
               <div
                 key={item}
-                className={`reveal rounded-2xl border border-white/10 bg-black/30 p-6 text-center text-white/75 reveal-delay-${index + 1}`}
+                className={`reveal rounded-2xl border border-[#17130d]/10 bg-[#fffaf1]/68 p-6 text-center text-[#17130d]/72 reveal-delay-${index + 1}`}
               >
                 {item}
               </div>
@@ -536,11 +536,11 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
           <div className="mt-10 text-center">
             <button
               onClick={() => setBookingOpen(true)}
-              className="inline-block rounded-full bg-[#d4a63f] px-8 py-4 font-semibold text-black shadow-[0_0_30px_rgba(212,166,63,0.5)] transition duration-300 hover:scale-105 hover:shadow-[0_0_50px_rgba(212,166,63,0.85)]"
+              className="inline-block rounded-full bg-[#17130d] px-8 py-4 font-semibold text-[#fffaf1] shadow-[0_16px_36px_rgba(23,19,13,0.24)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
             >
               Book Now
             </button>
-            <p className="mt-4 text-sm text-white/45">
+            <p className="mt-4 text-sm text-[#17130d]/45">
               
             </p>
           </div>
@@ -548,13 +548,13 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="reveal bg-white/[0.03] px-8 py-20 text-center">
+      <section id="contact" className="reveal bg-[#fffaf1]/62 px-8 py-20 text-center">
         <h3 className="mb-6 text-center text-3xl font-bold">Contact</h3>
 
-        <div className="space-y-3 text-white/70">
+        <div className="space-y-3 text-[#17130d]/70">
           <a
             href={`tel:${phone}`}
-            className="block transition hover:text-[#d4a63f]"
+            className="block transition hover:text-[#8a621c]"
           >
             Phone: (639) 414-1668
           </a>
@@ -563,7 +563,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
             href={instagram}
             target="_blank"
             rel="noreferrer"
-            className="block transition hover:text-[#d4a63f]"
+            className="block transition hover:text-[#8a621c]"
           >
             Instagram: @cutsbyharis
           </a>
@@ -572,7 +572,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
             href={mapsUrl}
             target="_blank"
             rel="noreferrer"
-            className="block transition hover:text-[#d4a63f]"
+            className="block transition hover:text-[#8a621c]"
           >
             Location: Open in Google Maps
           </a>
@@ -583,14 +583,14 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
             href={mapsUrl}
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-[#d4a63f]/40 px-6 py-3 text-[#d4a63f] transition hover:bg-[#d4a63f] hover:text-black"
+            className="rounded-full border border-[#b8892f]/40 px-6 py-3 text-[#8a621c] transition hover:bg-[#b8892f] hover:text-white"
           >
             Open Location
           </a>
 
           <button
             onClick={() => setBookingOpen(true)}
-            className="rounded-full bg-[#d4a63f] px-6 py-3 font-semibold text-black shadow-[0_0_25px_rgba(212,166,63,0.5)] transition duration-300 hover:scale-105 hover:shadow-[0_0_45px_rgba(212,166,63,0.8)]"
+            className="rounded-full bg-[#17130d] px-6 py-3 font-semibold text-[#fffaf1] shadow-[0_14px_30px_rgba(23,19,13,0.22)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
           >
             Book Now
           </button>
@@ -598,7 +598,7 @@ When I’m not cutting, I enjoy gaming, watching sports and TV, fishing, and rid
       </section>
 
             {/* FOOTER */}
-      <footer className="reveal border-t border-white/10 py-6 text-center text-white/40">
+      <footer className="reveal border-t border-[#17130d]/10 py-6 text-center text-[#17130d]/45">
         © 2026 CUTS BY HARIS. All rights reserved.
       </footer>
     </main>
