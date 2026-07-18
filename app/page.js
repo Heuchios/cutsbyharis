@@ -23,12 +23,12 @@ export default function Home() {
     },
     {
       name: "Skin Fade",
-      price: "$38+",
+      price: "$35+",
       desc: "Smooth blend with crisp lines and a modern premium look.",
     },
     {
       name: "Beard Trim",
-      price: "$15+",
+      price: "$20+",
       desc: "Precise shaping and cleanup for a polished finish.",
     },
     {
