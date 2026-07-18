@@ -113,9 +113,12 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    document.body.style.overflow = bookingOpen ? "hidden" : "";
+    document.documentElement.classList.toggle("booking-modal-open", bookingOpen);
+    document.body.classList.toggle("booking-modal-open", bookingOpen);
+
     return () => {
-      document.body.style.overflow = "";
+      document.documentElement.classList.remove("booking-modal-open");
+      document.body.classList.remove("booking-modal-open");
     };
   }, [bookingOpen]);
 

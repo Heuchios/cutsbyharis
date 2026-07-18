@@ -24,6 +24,11 @@ html {
 }
 body {
   overflow-x: hidden;
+  overflow-y: auto;
+}
+html.booking-modal-open,
+body.booking-modal-open {
+  overflow: hidden;
 }
 ::selection {
   background: rgba(184, 137, 47, 0.22);
