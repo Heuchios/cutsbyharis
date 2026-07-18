@@ -13,6 +13,7 @@ export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
   const [bookingOpen, setBookingOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [showMobileQuickActions, setShowMobileQuickActions] = useState(false);
 
   const services = [
     {
@@ -76,6 +77,7 @@ export default function Home() {
     animatedElements.forEach((el) => animationObserver.observe(el));
 
     const handleScroll = () => {
+      const scrolledPastHeroStart = window.scrollY > 120;
       let current = "home";
 
       sections.forEach((id) => {
@@ -89,6 +91,7 @@ export default function Home() {
       });
 
       setActiveSection(current);
+      setShowMobileQuickActions(scrolledPastHeroStart);
     };
 
     const handleEsc = (e) => {
@@ -356,7 +359,14 @@ export default function Home() {
         )}
       </header>
 
-      <div className="fixed inset-x-4 bottom-4 z-40 grid grid-cols-2 gap-3 rounded-full border border-[#17130d]/10 bg-[#fffaf1]/88 p-2 shadow-[0_18px_48px_rgba(23,19,13,0.2)] backdrop-blur-xl md:hidden">
+      <div
+        aria-hidden={!showMobileQuickActions}
+        className={`fixed inset-x-4 bottom-4 z-40 grid grid-cols-2 gap-3 rounded-full border border-[#17130d]/10 bg-[#fffaf1]/88 p-2 shadow-[0_18px_48px_rgba(23,19,13,0.2)] backdrop-blur-xl transition duration-300 md:hidden ${
+          showMobileQuickActions
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none translate-y-8 opacity-0"
+        }`}
+      >
         <a
           href={`tel:${phone}`}
           className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#17130d] px-4 text-sm font-semibold text-[#fffaf1]"
