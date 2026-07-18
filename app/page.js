@@ -355,6 +355,13 @@ export default function Home() {
               </button>
 
               <a
+                href={`tel:${phone}`}
+                className="rounded-full bg-[#17130d] px-7 py-3 text-center font-semibold text-[#fffaf1] shadow-[0_14px_32px_rgba(23,19,13,0.24)] transition duration-300 hover:scale-105 hover:bg-[#b8892f]"
+              >
+                Call Now
+              </a>
+
+              <a
                 href="#services"
                 className="rounded-full border border-[#17130d]/15 bg-[#fffaf1]/55 px-7 py-3 text-center font-semibold text-[#17130d] transition duration-300 hover:border-[#b8892f] hover:text-[#8a621c]"
               >
