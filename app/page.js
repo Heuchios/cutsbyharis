@@ -132,10 +132,6 @@ export default function Home() {
   return (
     <main id="home" className="min-h-screen overflow-x-hidden bg-[#f7f1e6] pb-24 text-[#17130d] md:pb-0">
       <style jsx global>{`
-        html {
-          scroll-behavior: smooth;
-        }
-
         .reveal {
           opacity: 0;
           transform: translateY(24px);
@@ -200,10 +196,6 @@ export default function Home() {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          html {
-            scroll-behavior: auto;
-          }
-
           .reveal,
           .slide-left,
           .slide-right {
