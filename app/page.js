@@ -3,13 +3,14 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const sections = ["home", "services", "about", "gallery", "reviews", "booking", "contact"];
+
 export default function Home() {
   const timelyUrl = "https://cutsbyharis.setmore.com/haris";
   const mapsUrl = "https://maps.app.goo.gl/1tpSeQ26uABuFAp9A";
   const phone = "+16394141668";
   const instagram = "https://instagram.com/cutsbyharis";
 
-  const sections = ["home", "services", "about", "gallery", "reviews", "booking", "contact"];
   const [activeSection, setActiveSection] = useState("home");
   const [bookingOpen, setBookingOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

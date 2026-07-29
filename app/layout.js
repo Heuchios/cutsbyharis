@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/next-script-for-ga -- GA4 is existing markup, and GTM uses a custom deferred loader. */
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -31,6 +32,14 @@ export default function RootLayout({ children }) {
     >
       <head>
   <script
+    dangerouslySetInnerHTML={{
+      __html: `
+        window.dataLayer = window.dataLayer || [];
+      `,
+    }}
+  />
+
+  <script
     async
     src="https://www.googletagmanager.com/gtag/js?id=G-NTSTRV98RD"
   ></script>
@@ -46,8 +55,42 @@ export default function RootLayout({ children }) {
       `,
     }}
   />
+
+  <script
+    dangerouslySetInnerHTML={{
+      __html: `
+        (function() {
+          var gtmLoaded = false;
+          function loadGTM() {
+            if (gtmLoaded) return;
+            gtmLoaded = true;
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-PVN36VP4');
+          }
+          window.addEventListener('load', loadGTM);
+          ['scroll','click','touchstart','keydown'].forEach(function(evt){
+            window.addEventListener(evt, loadGTM, { once: true, passive: true });
+          });
+          setTimeout(loadGTM, 4000);
+        })();
+      `,
+    }}
+  />
 </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PVN36VP4"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+        {children}
+      </body>
     </html>
   );
 }
